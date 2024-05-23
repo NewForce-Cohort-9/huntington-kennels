@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import './App.css'
-import { getAllPuppies, getAllPuppyCaretakers } from './services/PuppyService'
+import { getAllPuppies } from '../../services/PuppyService'
+import { PuppyCard } from './PuppyCard'
 
-export const App = () => {
+export const PuppyList = () => {
   //useState is a hook so you can only call it at the top of your component 
   //useState allows you to utilize a setter function that will trigger a re-render when state is update to a different value
   const [puppies, setPuppies] = useState([])
@@ -22,7 +22,7 @@ export const App = () => {
     <>
      <h2>Puppies</h2>
      {puppies.map(singlePuppy => {
-      return <p key={singlePuppy.id}>{singlePuppy.name}</p>
+      return <PuppyCard key={singlePuppy.id} puppy={singlePuppy}/>
      })}
     </>
   )
